@@ -25,7 +25,7 @@ async function handleSubmit(event) {
     }
     
     let result = await response.json();
-    console.log(result);
+    const token = result.token;
+    sessionStorage.setItem("authToken", token);
+    window.location.href = "index.html";
 }
-
-handleSubmit();
