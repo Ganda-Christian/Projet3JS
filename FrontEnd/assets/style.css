@@ -212,3 +212,11 @@ footer nav ul {
 	margin: 2em
 }
 
+.error-login {
+	background-color: #BB4947;
+	color: white;
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+
