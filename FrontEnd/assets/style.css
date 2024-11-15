@@ -179,6 +179,9 @@ li:hover {
 	width: 100%;
 
 }
+.modal-wrapper img {
+	width: 100%;
+}
 #contact {
 	width: 50%;
 margin: auto;
@@ -319,4 +322,22 @@ hr {
 	background-color: #1D6154;
 	cursor: pointer;
 	margin-top: 20px;
+}
+.image-container {
+	position: relative;
+	display: inline-block;
+}
+.image-container img {
+	display: block;
+}
+.image-container .overlay-icon {
+	position: absolute;
+	top: 6px;
+	right: 6px;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: black;
+	color: white;
+	padding: 4px;
+	border-radius: 10%;
 }

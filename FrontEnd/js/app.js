@@ -14,18 +14,22 @@ async function getWorks(filter) {
                 setFigure(filtered[i]);
                 setModalFigure(filtered[i]);
             }
-        }else{
+        } else{
             for(let i = 0; i < json.length; i++) {
                 setFigure(json[i]);
                 setModalFigure(json[i]);
             }
         }
+        //Delete
+        const trashCans = document.querySelectorAll(".fa-trash-can");
+        trashCans.forEach((e) =>
+            e.addEventListener("click", (event) => deleteWork(event))
+        );
         
     } catch (error) {
       console.error(error.message);
     };
 }
-
 getWorks();
 
 
@@ -35,16 +39,17 @@ function setFigure(data) {
 				<figcaption>${data.title}</figcaption>`;
 
     document.querySelector(".gallery").append(figure);
-
 }
 
 function setModalFigure(data) {
     const figure = document.createElement("figure");
-    figure.innerHTML = `<img src=${data.imageUrl} alt=${data.title}>
-				<figcaption>${data.title}</figcaption>`;
+    figure.innerHTML = `<div class="image-container">
+        <img src=${data.imageUrl} alt=${data.title}>
+		<figcaption>${data.title}</figcaption>
+        <i class="fa-solid fa-trash-can overlay-icon"></i>
+        </div>`;
 
     document.querySelector(".gallery-modal").append(figure);
-
 }
 
 async function getCategories() {
@@ -71,10 +76,7 @@ async function getCategories() {
 
 getCategories();
 
-
-
 function setFilter(data) {
-    console.log(data);
     const div = document.createElement("div");
     div.className = data.id;
     div.addEventListener("click", () => getWorks(data.id));
@@ -120,6 +122,7 @@ const openModal = function (e) {
 
 const closeModal = function (e) {
     if (modal === null) return;
+    if (e.target.classList.contains("fa-trash-can")) return;
     e.preventDefault();
     modal.style.display = "none";
     modal.setAttribute("aria-hidden", "true");
@@ -167,4 +170,30 @@ window.addEventListener("keydown", function (e) {
 document.querySelectorAll(".js-modal").forEach((a) => {
     a.addEventListener("click", openModal);
 });
+
+//fonction de Suppression
+
+async function deleteWork(event) {
+    event.stopPropagation();
+    const id = event.srcElement.id;
+    const deleteApi = "http://localhost:5678/api/works";
+    const token = sessionStorage.authToken;
+
+    let response = await fetch(deleteApi + id, {
+        method: "DELETE",
+        headers: {
+            Authorization: "Bearer" + token,
+        },
+        body: JSON.stringify(user),
+    });
+    if (response.status == 401 || response.status == 500) {
+        const errorBox = document.createElement("div");
+        errorBox.className = "error-login";
+        errorBox.innerHTML = "Il y a eu une erreur";
+        document.querySelector(".modal-button-container").prepend(errorBox);
+    } else {
+        let result = await response.json();
+        console.log(result);
+    }
+}
 
