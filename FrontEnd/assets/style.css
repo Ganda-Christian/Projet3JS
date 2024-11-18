@@ -184,7 +184,7 @@ li:hover {
 }
 #contact {
 	width: 50%;
-margin: auto;
+    margin: auto;
 }
 #contact > * {
 	text-align: center;
@@ -267,6 +267,7 @@ footer nav ul {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin: 40px;
 }
 
 .modal-wrapper {
@@ -298,7 +299,7 @@ h3 {
 	font-family: 'Work Sans';
 	font-size: 18px;
 	font-weight: normal;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 /* trait/ligne au dessus du bouton ajouter une photo */

@@ -46,7 +46,7 @@ function setModalFigure(data) {
     figure.innerHTML = `<div class="image-container">
         <img src=${data.imageUrl} alt=${data.title}>
 		<figcaption>${data.title}</figcaption>
-        <i class="fa-solid fa-trash-can overlay-icon"></i>
+        <i id=${data.id} class="fa-solid fa-trash-can overlay-icon"></i>
         </div>`;
 
     document.querySelector(".gallery-modal").append(figure);
@@ -122,7 +122,7 @@ const openModal = function (e) {
 
 const closeModal = function (e) {
     if (modal === null) return;
-    if (e.target.classList.contains("fa-trash-can")) return;
+    //if (e.target.classList.contains("fa-trash-can")) return;
     e.preventDefault();
     modal.style.display = "none";
     modal.setAttribute("aria-hidden", "true");
@@ -174,17 +174,16 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 //fonction de Suppression
 
 async function deleteWork(event) {
-    event.stopPropagation();
+    //event.stopPropagation();
     const id = event.srcElement.id;
-    const deleteApi = "http://localhost:5678/api/works";
+    const deleteApi = "http://localhost:5678/api/works/";
     const token = sessionStorage.authToken;
 
     let response = await fetch(deleteApi + id, {
         method: "DELETE",
         headers: {
-            Authorization: "Bearer" + token,
+            Authorization: "Bearer " + token,
         },
-        body: JSON.stringify(user),
     });
     if (response.status == 401 || response.status == 500) {
         const errorBox = document.createElement("div");
@@ -196,4 +195,40 @@ async function deleteWork(event) {
         console.log(result);
     }
 }
+
+//Modal switch
+
+const switchModal = function () {
+    console.log("clicked");
+    document.querySelector(
+        ".modal-wrapper"
+    ).innerHTML = `<div class="close-button-container">
+                <button class="js-modal-back">
+					<i class="fa-solid fa-arrow-left"></i>
+				</button>
+				<button class="js-modal-close">
+					<i class="fa-solid fa-xmark"></i>
+				</button>
+			</div>
+            <h3>Ajout photo</h3>
+            <div id="contact">
+                <form action="#" method="post">
+					<label for="name">Titre</label>
+					<input type="text" name="title" id="title">
+					<label for="category">Catégorie</label>
+					<input type="text" name="category" id="category">
+					<input type="submit" value="Envoyer">
+				</form>
+            </div>
+            <hr>
+            <div class="modal-button-container">
+                <button class="validate-button"></button>
+            </div>`;
+};
+
+const backButton = document.querySelector(".fa-arrow-left");
+
+const addPhotoButton = document.querySelector(".add-photo");
+console.log(addPhotoButton);
+addPhotoButton.addEventListener("click", switchModal);
 
