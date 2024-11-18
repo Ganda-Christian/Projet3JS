@@ -109,8 +109,7 @@ function displayAdminMode(){
           '<p><a href="#modal1" class="js-modal"><i class="fa-regular fa-pen-to-square"></i>Mode édition</a></p>';
         document.body.prepend(editBanner);
 
-        const login = document.querySelector(".login")
-        login.textContent = "logout";
+        document.querySelector(".login").textContent = "logout";
     }
 }
 
