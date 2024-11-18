@@ -49,7 +49,7 @@ function setModalFigure(data) {
         <i id=${data.id} class="fa-solid fa-trash-can overlay-icon"></i>
         </div>`;
 
-    document.querySelector(".gallery-modal").append(figure);
+    document.querySelector(".modal-gallery").append(figure);
 }
 
 async function getCategories() {
@@ -79,10 +79,25 @@ getCategories();
 function setFilter(data) {
     const div = document.createElement("div");
     div.className = data.id;
+    //div.className = "active-filter";
     div.addEventListener("click", () => getWorks(data.id));
+    div.addEventListener("click", (event) => toggleFilter(event));
+    document
+    .querySelector(".tous")
+    .addEventListener("click", (event) => toggleFilter(event));
+
     div.innerHTML = `${data.name}`;
 
     document.querySelector(".div-container").append(div);
+}
+
+function toggleFilter(event) {
+    const container = document.querySelector(".div-container");
+    Array.from(container.children).forEach((child) =>
+        child.classList.remove("active-filter")
+    );
+    event.target.classList.add("active-filter");
+    //document.querySelector(div.classeList.push(".active-filter"));
 }
 document.querySelector(".tous").addEventListener("click", () => getWorks());
 
@@ -250,12 +265,14 @@ function toggleModal() {
     ) {
         galleryModal.style.display = "none";
         addModal.style.display = "block";
-        console.log("1");
     } else {
-        galleryModal.style.display = "none";
-        addModal.style.display = "block";
-        console.log("2");
+        galleryModal.style.display = "block";
+        addModal.style.display = "none";
     }
 }
+
+// Add photo input
+
+document.querySelectorSelector("#file").style.display = "none";
 
 

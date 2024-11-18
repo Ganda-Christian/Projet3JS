@@ -44,15 +44,25 @@
 				</div>
 
 				<h3 id="">Ajout Photo</h3>
-				<div id="">
+				<div class="form add-photo-form">
 					<form action="#" method="post">
+						<div class="file-section">
+							<div class=""><i class="fa-regular fa-image"></i></div>
+							<label for="file">
+								+ Ajouter photo</label>
+							<input type="file" id="myFile" name="filename"
+							accept="image/png, image/jpeg">
+							<p>jpg, png: 4mo max</p>
+						</div>
 						<label for="name">Titre</label>
 						<input type="text" name="title" id="title">
 						<label for="category">Catégorie</label>
 						<input type="text" name="category" id="category">
-						<input type="submit" value="Envoyer">
+						<hr>
+						<input type="submit" value="Valider">
 					</form>
 				</div>
+			</div>
 		</div>
 		</aside>
 		<header>
@@ -82,14 +92,14 @@
 				<h2>Mes Projets</h2>
 				<!--<p><i class="fa-regular fa-pen-to-square"></i>Modifier</p>-->
 				<div class="div-container">
-					<div class="tous">Tous</div>
+					<div class="tous active-filter">Tous</div>
 				</div>
 				<div class="gallery">
 					
 				</div>
 			</section>
-			<section id="contact">
-				<h2 id="">Contact</h2>
+			<section class="form">
+				<h2 id="contact">Contact</h2>
 				<p>Vous avez un projet ? Discutons-en !</p>
 				<form action="#" method="post">
 					<label for="name">Nom</label>

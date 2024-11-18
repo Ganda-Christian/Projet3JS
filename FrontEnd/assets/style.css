@@ -168,48 +168,53 @@ li:hover {
 	width: 100%;
 
 }
-.gallery-modal {
+
+.active-filter {
+	background-color: #1D6154;
+	color: white;
+}
+.modal-gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-.gallery-modal img {
+.modal-gallery img {
 	width: 100%;
 
 }
 .modal-wrapper img {
 	width: 100%;
 }
-#contact {
+.form {
 	width: 50%;
     margin: auto;
 }
-#contact > * {
+.form > * {
 	text-align: center;
 
 }
-#contact h2{
+.form h2{
 	margin-bottom: 20px;
 }
-#contact form {
+.form form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+.form input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+.form label {
 	margin: 2em 0 1em 0;
 }
-#contact textarea {
+.form textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
@@ -277,6 +282,31 @@ footer nav ul {
 	min-height: calc(100vh - 20px);
 	width: 600px;
 	padding: 20px;
+}
+
+.file-section {
+	background-color: #E8F1F6;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 10px;
+}
+.file-section label {
+    padding: 10px 20px;
+	width: 170px;
+	border: 1px solid #1D6154;
+	border-radius: 25px;
+	font-family: 'Syne';
+	color: #306685;
+	background-color: #B9C5CC;
+	cursor: pointer;
+	margin-top: 20px;
+	text-align: center;
+}
+.fa-image {
+	color: #B9C5CC;
+	font-size: 50px;
+	margin-top: 5px;
 }
 
 /**/
