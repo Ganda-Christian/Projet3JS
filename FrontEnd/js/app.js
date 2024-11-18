@@ -196,7 +196,7 @@ async function deleteWork(event) {
     }
 }
 
-//Modal switch
+/*Modal switch
 
 const switchModal = function () {
     console.log("clicked");
@@ -224,11 +224,38 @@ const switchModal = function () {
             <div class="modal-button-container">
                 <button class="validate-button"></button>
             </div>`;
+//modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
+//modal.querySelector("js-modal-back").addEventListener("click", closeModal);
 };
 
 const backButton = document.querySelector(".fa-arrow-left");
 
 const addPhotoButton = document.querySelector(".add-photo");
 console.log(addPhotoButton);
-addPhotoButton.addEventListener("click", switchModal);
+addPhotoButton.addEventListener("click", switchModal);*/
+
+// Modal Toggle
+const addPhotoButton = document.querySelector(".add-photo");
+const backButton = document.querySelector(".js-modal-back");
+
+addPhotoButton.addEventListener("click", toggleModal);
+backButton.addEventListener("click", toggleModal);
+
+function toggleModal() {
+    const galleryModal = document.querySelector(".gallery-modal");
+    const addModal = document.querySelector(".add-modal");
+
+    if (galleryModal.style.display === "block" ||
+        galleryModal.style.display === ""
+    ) {
+        galleryModal.style.display = "none";
+        addModal.style.display = "block";
+        console.log("1");
+    } else {
+        galleryModal.style.display = "none";
+        addModal.style.display = "block";
+        console.log("2");
+    }
+}
+
 
